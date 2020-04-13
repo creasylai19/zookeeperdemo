@@ -26,7 +26,10 @@ public class MainClass {
 
     private static LiteJobConfiguration createJobConfiguration() {
         // 定义作业核心配置
-        JobCoreConfiguration simpleCoreConfig = JobCoreConfiguration.newBuilder("demoSimpleJob", "0/15 * * * * ?", 10).build();
+        JobCoreConfiguration simpleCoreConfig = JobCoreConfiguration
+                .newBuilder("demoSimpleJob", "0/15 * * * * ?", 10)
+                .shardingItemParameters("0=A,1=B,2=C,3=D,4=E,5=F,6=G,7=H,8=I,9=J")
+                .build();
         // 定义SIMPLE类型配置
         SimpleJobConfiguration simpleJobConfig = new SimpleJobConfiguration(simpleCoreConfig, MyElasticJob.class.getCanonicalName());
         // 定义Lite作业根配置
